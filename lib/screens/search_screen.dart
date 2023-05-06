@@ -73,7 +73,7 @@ class _SearchScreenState extends State<SearchScreen> {
               builder: (context, AsyncSnapshot snapshot) {
                 print(snapshot.data);
                 if (!snapshot.hasData) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else {

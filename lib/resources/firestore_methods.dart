@@ -47,9 +47,15 @@ class FirestoreMethods {
           'likes': FieldValue.arrayRemove([uid]),
         });
       } else {
-        _firestore.collection('posts').doc(postId).update({
-          'likes': FieldValue.arrayUnion([uid]),
-        });
+        DocumentReference docRef = _firestore.collection('posts').doc(postId);
+        docRef.get().then((doc) {
+          List likesList = doc.get('likes');
+          likesList.insert(0, uid);
+          docRef
+              .update({'likes': likesList})
+              .then((value) => print("Uid added to likes list"))
+              .onError((error, _) => print("Failed to add uid: $error"));
+        }).catchError((error) => print("Failed to retrieve document"));
       }
     } catch (e) {
       print(e.toString());
@@ -100,32 +106,31 @@ class FirestoreMethods {
     try {
       DocumentSnapshot snap =
           await _firestore.collection('users').doc(uid).get();
-      //Explicitly stating that snap.data() is not null and is a list     
+      //Explicitly stating that snap.data() is not null and is a list
       List following = (snap.data()! as dynamic)['following'];
 
-      if(following.contains(followId)){
+      if (following.contains(followId)) {
         //removing current user from followers
-         await _firestore.collection('users').doc(followId).update({
+        await _firestore.collection('users').doc(followId).update({
           'followers': FieldValue.arrayRemove([uid])
-         });
+        });
         // removing followId user from following of current user
-         await _firestore.collection('users').doc(uid).update({
+        await _firestore.collection('users').doc(uid).update({
           'following': FieldValue.arrayRemove([followId])
-         });
-      } 
-      else{
+        });
+      } else {
         //adding current user to followers
-         await _firestore.collection('users').doc(followId).update({
+        await _firestore.collection('users').doc(followId).update({
           'followers': FieldValue.arrayUnion([uid])
-         });
+        });
         // adding followId user to following of current user
-         await _firestore.collection('users').doc(uid).update({
+        await _firestore.collection('users').doc(uid).update({
           'following': FieldValue.arrayUnion([followId])
-         });
+        });
       }
-
     } catch (e) {
       print(e.toString());
     }
   }
+
 }

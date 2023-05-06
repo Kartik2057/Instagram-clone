@@ -9,7 +9,7 @@ class UserProvider extends ChangeNotifier {
 
   //Called by responsive layout and notifies the mobile screen layout provider
   Future<void> refreshUser() async {
-    User user = await _authMethods.getUserDetails();
+    User user = await _authMethods.getCurrentUserDetails();
     _user = user;
     notifyListeners();
   }

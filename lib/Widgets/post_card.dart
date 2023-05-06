@@ -97,36 +97,36 @@ class _PostCardState extends State<PostCard> {
                     ),
                   ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) => Dialog(
-                                child: ListView(
-                              padding: const EdgeInsets.symmetric(vertical: 16),
-                              shrinkWrap: true,
-                              children: ['Delete']
-                                  .map(
-                                    (e) => InkWell(
-                                      onTap: () async {
-                                        FirestoreMethods()
-                                            .deletePost(widget.snap['postId']);
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: Container(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 12,
-                                          horizontal: 16,
-                                        ),
-                                        child: Text(e),
-                                      ),
-                                    ),
-                                  )
-                                  .toList(),
-                            )));
-                  },
-                  icon: const Icon(Icons.more_vert),
-                ),
+                // IconButton(
+                //   onPressed: () {
+                //     showDialog(
+                //         context: context,
+                //         builder: (context) => Dialog(
+                //                 child: ListView(
+                //               padding: const EdgeInsets.symmetric(vertical: 16),
+                //               shrinkWrap: true,
+                //               children: ['Delete']
+                //                   .map(
+                //                     (e) => InkWell(
+                //                       onTap: () async {
+                //                         FirestoreMethods()
+                //                             .deletePost(widget.snap['postId']);
+                //                         Navigator.of(context).pop();
+                //                       },
+                //                       child: Container(
+                //                         padding: const EdgeInsets.symmetric(
+                //                           vertical: 12,
+                //                           horizontal: 16,
+                //                         ),
+                //                         child: Text(e),
+                //                       ),
+                //                     ),
+                //                   )
+                //                   .toList(),
+                //             )));
+                //   },
+                //   icon: const Icon(Icons.more_vert),
+                // ),
               ],
             ),
           ),
@@ -220,7 +220,7 @@ class _PostCardState extends State<PostCard> {
                             builder: (context) =>
                                 CommentsScreen(snap: widget.snap)),
                       ),
-                  icon: const Icon(Icons.comment_outlined)),
+                  icon:  const Icon(Icons.insert_comment_rounded)),
               IconButton(
                   onPressed: () {},
                   icon: const Icon(
@@ -231,9 +231,10 @@ class _PostCardState extends State<PostCard> {
                 alignment: Alignment.bottomRight,
                 child: IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.bookmark_border),
+                  icon: const Icon(Icons.bookmark_border),
                 ),
-              ))
+              )
+              )
             ],
           ),
 

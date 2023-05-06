@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram_flutter/Widgets/like_card1.dart';
 import 'package:provider/provider.dart';
 
 import '../Widgets/post_card.dart';
@@ -71,9 +72,12 @@ class _LikeScreenState extends State<LikeScreen> {
                     15:0,
                   ),
                   child: snapshot.data!.docs[index].data()['likes'].contains(user.uid)
-                  ?PostCard(
-                    snap:snapshot.data!.docs[index].data(),
-                  ):null,
+                  // ?PostCard(
+                  //   snap:snapshot.data!.docs[index].data(),
+                  // ):null,
+                  ?LikeCard(
+                    snap: snapshot.data!.docs[index].data(),
+                  ):null
                 ),
               );
               },
