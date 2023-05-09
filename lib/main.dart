@@ -16,10 +16,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if(kIsWeb){
   await Firebase.initializeApp(
+    //Sensitive information like apikey and others have been removed for safety
+    //You can add these information following the steps given in the readme file 
     options: const FirebaseOptions(
-      apiKey: "AIzaSyAES1IDPCgyyjuRhb65gkg83oHlfHjX2ps", appId: "1:1015517077041:web:156b93244e38cabc20bf10", messagingSenderId: "1015517077041", 
-      projectId: "instagram-clone-8939b",
-      storageBucket: "instagram-clone-8939b.appspot.com",
+      apiKey: "", appId: "", messagingSenderId: "", 
+      projectId: "",
+      storageBucket: "",
       )
   );
   }
