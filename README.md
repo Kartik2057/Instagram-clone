@@ -11,11 +11,6 @@ Picstagram is an exquisite Instagram clone crafted with Flutter, empowering user
 - :zap: **Follow & Discover**: Connect with friends, family, and inspirational individuals by following their profiles, unlocking a world of captivating imagery and diverse perspectives.
 - :mag: **Effortless Search**: Seamlessly explore a vast collection of posts and users, effortlessly finding the content and profiles that pique your interest.
 - :cop: **User Authentication**: Safeguard your data and enjoy a personalized experience with secure login, sign up, and sign out functionality.
-- :house: **Home Screen**: Immerse yourself in a curated feed of posts from the users you follow, keeping you up to date with their latest adventures and visual stories.
-- :mag_right: **Search Screen**: Dive into the world of endless possibilities as you search for inspiring users and discover captivating posts that align with your interests.
-- :envelope: **Post Screen**: Create and share your unique stories with the world, accompanied by heartfelt captions and eye-catching visuals that capture the essence of the moment.
-- :star: **Favorites Screen**: Keep track of the images that have touched your heart with the Favorites screen, providing a dedicated space for managing and revisiting your liked posts.
-- :bust_in_silhouette: **Profile Screen**: Showcase your creativity and individuality through your own profile, where you can share captivating posts and give others a glimpse into your unique world.
 
 ## Screenshots
 
@@ -32,6 +27,8 @@ Picstagram is an exquisite Instagram clone crafted with Flutter, empowering user
 
 
 ## Installation
+
+### Using PC
 
 1. Make sure you have Flutter and Dart installed on your development machine. If not, follow the official Flutter installation guide: 
 [Flutter Installation Guide](https://flutter.dev/docs/get-started/install)
@@ -58,16 +55,31 @@ Picstagram is an exquisite Instagram clone crafted with Flutter, empowering user
   flutter run
 ```
 
+### Without Using PC
+
+To install Picstagram on your mobile device, follow these steps:
+
+1. Download the latest APK file from the [releases](https://github.com/Kartik2057/myapp/releases) section of this repository.
+
+2. Locate the downloaded APK file on your mobile device. You can usually find it in the "Downloads" folder or the folder you specified during the download.
+
+3. Tap on the APK file to start the installation process.
+
+4. If prompted, allow the installation from unknown sources. This option can be found in your device's settings under **Settings > Security > Unknown sources**. Enable it to allow the installation of apps from sources other than the Google Play Store.
+
+5. Follow the on-screen prompts and grant any necessary permissions to complete the installation.
+
+6. Once the installation is complete, you can find and launch Picstagram from your device's app drawer.
 
 ## Usage
 
 Upon launching the app, you will be presented with the login screen. If you don't have an account, you can sign up to create one. After logging in, you will be directed to the Home screen, where you can see posts all users. You can navigate to different screens using the bottom navigation bar:
 
-- Home: Displays posts from all users.
-- Search: Allows you to search for other users and presents a grid view.
-- Post: Lets you create and share new posts.
-- Favorites: Shows a list of your liked images and gives option to dislike the image using right drag.
-- Profile: Displays your user information and posts.
+- :house: **Home Screen**: Immerse yourself in a curated feed of posts from the users you follow, keeping you up to date with their latest adventures and visual stories.
+- :mag_right: **Search Screen**: Dive into the world of endless possibilities as you search for inspiring users and discover captivating posts that align with your interests.
+- :envelope: **Post Screen**: Create and share your unique stories with the world, accompanied by heartfelt captions and eye-catching visuals that capture the essence of the moment.
+- :star: **Favorites Screen**: Keep track of the images that have touched your heart with the Favorites screen, providing a dedicated space for managing and revisiting your liked posts.
+- :bust_in_silhouette: **Profile Screen**: Showcase your creativity and individuality through your own profile, where you can share captivating posts and give others a glimpse into your unique world.
 
 ## Dependencies
 
