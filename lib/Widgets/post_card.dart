@@ -221,20 +221,20 @@ class _PostCardState extends State<PostCard> {
                                 CommentsScreen(snap: widget.snap)),
                       ),
                   icon:  const Icon(Icons.insert_comment_rounded)),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.send,
-                  )),
-              Expanded(
-                  child: Align(
-                alignment: Alignment.bottomRight,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.bookmark_border),
-                ),
-              )
-              )
+              // IconButton(
+              //     onPressed: () {},
+              //     icon: const Icon(
+              //       Icons.send,
+              //     )),
+              // Expanded(
+              //     child: Align(
+              //   alignment: Alignment.bottomRight,
+              //   child: IconButton(
+              //     onPressed: () {},
+              //     icon: const Icon(Icons.bookmark_border),
+              //   ),
+              // )
+              // )
             ],
           ),
 

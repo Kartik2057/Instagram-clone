@@ -43,14 +43,14 @@ class _LikeScreenState extends State<LikeScreen> {
         color: primaryColor,
         height: 32,
         ),
-        actions: [
-          IconButton(
-            onPressed: () {}, 
-            icon: const Icon(
-              Icons.messenger_outline,
-            )
-            )
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {}, 
+        //     icon: const Icon(
+        //       Icons.messenger_outline,
+        //     )
+        //     )
+        // ],
       ),
       body: RefreshIndicator(
         onRefresh: _refresh,

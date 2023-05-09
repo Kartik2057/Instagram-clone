@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram_flutter/providers/user_provider.dart';
 import 'package:instagram_flutter/resources/firestore_methods.dart';
+import 'package:instagram_flutter/screens/expanded_image.dart';
+import 'package:instagram_flutter/screens/image_preview_screen.dart';
 import 'package:instagram_flutter/utils/colors.dart';
 import 'package:instagram_flutter/utils/utils.dart';
 import 'package:provider/provider.dart';
@@ -123,6 +125,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
   Widget build(BuildContext context) {
 
     final User user = Provider.of<UserProvider>(context).getUser;
+
+
     return _file == null
     ?Center(
       child: CircleAvatar(
@@ -130,7 +134,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
           onPressed: () {
              _selectImage(context);
           }, 
-          icon: const Icon(Icons.upload)
+          icon: const Icon(
+            Icons.upload,
+            size: 35,)
           ),
       ),
     )
@@ -176,11 +182,17 @@ class _AddPostScreenState extends State<AddPostScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               CircleAvatar(
-                backgroundImage: NetworkImage(
-                  user.photoUrl
+               GestureDetector(
+                 onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>
+                   ExpandedImage(url: user.photoUrl)
+                 )
+                 ),
+                 child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    user.photoUrl
+                  ),
                 ),
-              ),
+               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width*0.4,
                 child: TextField(
@@ -192,23 +204,29 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   maxLines: 8,
                 ),
               ),
-              SizedBox(
-                height: 45,
-                width: 45,
-                child: AspectRatio(
-                  aspectRatio: 487/451,
-                  child: Container(
-                   decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: MemoryImage(
-                        _file!
-                      ),
-                      fit: BoxFit.fill,
-                      alignment: FractionalOffset.topCenter, 
-                      )
-                   ),
+              GestureDetector(
+                onTap: ()=>Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ImagePreviewScreen(file: _file)
+                  )
                   ),
-                  ),
+                child: SizedBox(
+                  height: 45,
+                  width: 45,
+                  child: AspectRatio(
+                    aspectRatio: 487/451,
+                    child: Container(
+                     decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: MemoryImage(
+                          _file!
+                        ),
+                        fit: BoxFit.fill,
+                        alignment: FractionalOffset.topCenter, 
+                        )
+                     ),
+                    ),
+                    ),
+                ),
               ),
               const Divider(),
             ],

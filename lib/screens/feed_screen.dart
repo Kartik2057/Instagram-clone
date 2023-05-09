@@ -40,11 +40,11 @@ class _FeedScreenState extends State<FeedScreen> {
                 height: 32,
               ),
               actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.messenger_outline,
-                    ))
+                // IconButton(
+                //     onPressed: () {},
+                //     icon: const Icon(
+                //       Icons.messenger_outline,
+                //     ))
               ],
             ),
       body: RefreshIndicator(
