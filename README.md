@@ -5,17 +5,17 @@ Picstagram is an exquisite Instagram clone crafted with Flutter, empowering user
 ## Features
 
 
-- Photo Sharing: Express yourself and inspire others by uploading your stunning photos directly from the gallery or camera.
-- Double-Tap Likes: Show appreciation for captivating moments with a simple double-tap gesture, spreading love and encouragement throughout the community.
-- Engaging Comments: Share your thoughts, connect with like-minded individuals, and foster meaningful conversations by leaving comments on posts that resonate with you.
-- Follow & Discover: Connect with friends, family, and inspirational individuals by following their profiles, unlocking a world of captivating imagery and diverse perspectives.
-- Effortless Search: Seamlessly explore a vast collection of posts and users, effortlessly finding the content and profiles that pique your interest.
-- User Authentication: Safeguard your data and enjoy a personalized experience with secure login, sign up, and sign out functionality.
-- Home Screen: Immerse yourself in a curated feed of posts from the users you follow, keeping you up to date with their latest adventures and visual stories.
-- Search Screen: Dive into the world of endless possibilities as you search for inspiring users and discover captivating posts that align with your interests.
-- Post Screen: Create and share your unique stories with the world, accompanied by heartfelt captions and eye-catching visuals that capture the essence of the moment.
-- Favorites Screen: Keep track of the images that have touched your heart with the Favorites screen, providing a dedicated space for managing and revisiting your liked posts.
-- Profile Screen: Showcase your creativity and individuality through your own profile, where you can share captivating posts and give others a glimpse into your unique world.
+- :camera_flash: **Photo Sharing**:Express yourself and inspire others by uploading your stunning photos directly from the gallery or camera.
+-  :heart: **Double-Tap Likes**: Show appreciation for captivating moments with a simple double-tap gesture, spreading love and encouragement throughout the community.
+-  :left_speech_bubble: **Engaging Comments**: Share your thoughts, connect with like-minded individuals, and foster meaningful conversations by leaving comments on posts that resonate with you.
+- :zap: **Follow & Discover**: Connect with friends, family, and inspirational individuals by following their profiles, unlocking a world of captivating imagery and diverse perspectives.
+- :mag: **Effortless Search**: Seamlessly explore a vast collection of posts and users, effortlessly finding the content and profiles that pique your interest.
+- :cop: **User Authentication**: Safeguard your data and enjoy a personalized experience with secure login, sign up, and sign out functionality.
+- :house: **Home Screen**: Immerse yourself in a curated feed of posts from the users you follow, keeping you up to date with their latest adventures and visual stories.
+- :mag_right: **Search Screen**: Dive into the world of endless possibilities as you search for inspiring users and discover captivating posts that align with your interests.
+- :envelope: **Post Screen**: Create and share your unique stories with the world, accompanied by heartfelt captions and eye-catching visuals that capture the essence of the moment.
+- :star: **Favorites Screen**: Keep track of the images that have touched your heart with the Favorites screen, providing a dedicated space for managing and revisiting your liked posts.
+- :bust_in_silhouette: **Profile Screen**: Showcase your creativity and individuality through your own profile, where you can share captivating posts and give others a glimpse into your unique world.
 
 ## Screenshots
 
