@@ -1,13 +1,13 @@
 # Picstagram App
 
-Picstagram is an exquisite Instagram clone crafted with Flutter, empowering users to unleash their creativity and connect with others through captivating photos. With a seamless user experience and a plethora of exciting features, Picstagram offers a delightful platform for sharing, discovering, and engaging with remarkable visual content.
+Picstagram is an exquisite Instagram clone crafted with **Flutter**, empowering users to unleash their creativity and connect with others through captivating photos. With a seamless user experience and a plethora of exciting features, Picstagram offers a delightful platform for sharing, discovering, and engaging with remarkable visual content.
 
 ## Features
 
 
 - :camera_flash: **Photo Sharing**:Express yourself and inspire others by uploading your stunning photos directly from the gallery or camera.
 -  :heart: **Double-Tap Likes**: Show appreciation for captivating moments with a simple double-tap gesture, spreading love and encouragement throughout the community.
--  :left_speech_bubble: **Engaging Comments**: Share your thoughts, connect with like-minded individuals, and foster meaningful conversations by leaving comments on posts that resonate with you.
+- :left_speech_bubble: **Engaging Comments**: Share your thoughts, connect with like-minded individuals, and foster meaningful conversations by leaving comments on posts that resonate with you.
 - :zap: **Follow & Discover**: Connect with friends, family, and inspirational individuals by following their profiles, unlocking a world of captivating imagery and diverse perspectives.
 - :mag: **Effortless Search**: Seamlessly explore a vast collection of posts and users, effortlessly finding the content and profiles that pique your interest.
 - :cop: **User Authentication**: Safeguard your data and enjoy a personalized experience with secure login, sign up, and sign out functionality.
@@ -59,7 +59,7 @@ Picstagram is an exquisite Instagram clone crafted with Flutter, empowering user
 
 To install Picstagram on your mobile device, follow these steps:
 
-1. Download the latest APK file from the [releases](https://github.com/Kartik2057/Picstagram/tree/master/releases) section of this repository.
+1. **Download the latest APK file** from the [releases](https://github.com/Kartik2057/Picstagram/tree/master/releases) section of this repository.
 
 2. Locate the downloaded APK file on your mobile device. You can usually find it in the "Downloads" folder or the folder you specified during the download.
 
