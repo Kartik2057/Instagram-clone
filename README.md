@@ -59,7 +59,7 @@ Picstagram is an exquisite Instagram clone crafted with Flutter, empowering user
 
 To install Picstagram on your mobile device, follow these steps:
 
-1. Download the latest APK file from the [releases](https://github.com/Kartik2057/myapp/releases) section of this repository.
+1. Download the latest APK file from the [releases](https://github.com/Kartik2057/Picstagram/tree/master/releases) section of this repository.
 
 2. Locate the downloaded APK file on your mobile device. You can usually find it in the "Downloads" folder or the folder you specified during the download.
 

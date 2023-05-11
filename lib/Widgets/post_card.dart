@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_flutter/screens/expanded_image.dart';
+import 'package:instagram_flutter/screens/post_detail_screen.dart';
+import 'package:instagram_flutter/screens/profile_screen.dart';
 import 'package:instagram_flutter/utils/global_variables.dart';
 import '../Widgets/like_animation.dart';
 import '../resources/firestore_methods.dart';
@@ -57,8 +60,8 @@ class _PostCardState extends State<PostCard> {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(
-          color: width> webScreenSize?primaryColor:mobileBackgroundColor
-        ),
+            color:
+                width > webScreenSize ? primaryColor : mobileBackgroundColor),
         color: mobileBackgroundColor,
       ),
       padding: const EdgeInsets.symmetric(
@@ -74,26 +77,42 @@ class _PostCardState extends State<PostCard> {
             //Header section
             child: Row(
               children: [
-                CircleAvatar(
-                  radius: 16,
-                  backgroundImage: NetworkImage(
-                    widget.snap['profImage'],
+                GestureDetector(
+                  onTap: () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return ProfileScreen(uid: widget.snap['uid']);
+                  }
+                  )
+                  ),
+                  child: CircleAvatar(
+                    radius: 16,
+                    backgroundImage: NetworkImage(
+                      widget.snap['profImage'],
+                    ),
                   ),
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.snap['username'],
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                GestureDetector(
+                  onTap: () => Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return ProfileScreen(uid: widget.snap['uid']);
+                      }
+                      )
+                      ),
+                  child: Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.snap['username'],
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -133,6 +152,9 @@ class _PostCardState extends State<PostCard> {
 
           //Image Section
           GestureDetector(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context){
+              return PostDetailScreen(snap: widget.snap);
+            })),
             onDoubleTap: () async {
               await FirestoreMethods().likePost(
                 widget.snap['postId'],
@@ -152,9 +174,7 @@ class _PostCardState extends State<PostCard> {
                   imageUrl: widget.snap['postUrl'],
                   placeholder: (context, url) =>
                       const Center(child: CircularProgressIndicator()),
-                  errorWidget: (context, url, error) => const Icon(
-                    Icons.error
-                    ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
                 // child: Image.network(
                 //   widget.snap['postUrl'],
@@ -220,7 +240,7 @@ class _PostCardState extends State<PostCard> {
                             builder: (context) =>
                                 CommentsScreen(snap: widget.snap)),
                       ),
-                  icon:  const Icon(Icons.insert_comment_rounded)),
+                  icon: const Icon(Icons.insert_comment_rounded)),
               // IconButton(
               //     onPressed: () {},
               //     icon: const Icon(
@@ -270,20 +290,21 @@ class _PostCardState extends State<PostCard> {
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
                           TextSpan(
-                              text: " ${widget.snap['description']}",
-                              ),
+                            text: " ${widget.snap['description']}",
+                          ),
                         ]),
                   ),
                 ),
                 InkWell(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => CommentsScreen(snap: widget.snap)
-                      )
-                      ).then((value){
-                        setState(() {
-                          getComments();
-                        });
-                      }),    
+                  onTap: () => Navigator.of(context)
+                      .push(MaterialPageRoute(
+                          builder: (context) =>
+                              CommentsScreen(snap: widget.snap)))
+                      .then((value) {
+                    setState(() {
+                      getComments();
+                    });
+                  }),
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Text(

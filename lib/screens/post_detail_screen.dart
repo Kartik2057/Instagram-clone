@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:instagram_flutter/Widgets/like_card2.dart';
 import 'package:instagram_flutter/utils/colors.dart';
 import '../Widgets/comment_card.dart';
+import '../Widgets/like_animation.dart';
 import '../models/tab_bar_delegate.dart' as tbd;
 import '../models/tab_bar_delegate.dart';
 import '../resources/firestore_methods.dart';
 import 'expanded_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class PostDetailScreen extends StatefulWidget {
   final snap;
@@ -34,6 +36,7 @@ class _PostDetailScreenState extends State<PostDetailScreen>
 
   @override
   Widget build(BuildContext context) {
+  
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -53,7 +56,7 @@ class _PostDetailScreenState extends State<PostDetailScreen>
             Text(widget.snap['username']),
           ],
         ),
-        actions: [
+        actions: FirebaseAuth.instance.currentUser!.uid==widget.snap['uid']?[
           IconButton(
             onPressed: () {
               showDialog(
@@ -85,7 +88,7 @@ class _PostDetailScreenState extends State<PostDetailScreen>
             },
             icon: const Icon(Icons.more_vert),
           ),
-        ],
+        ]:null,
       ),
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {

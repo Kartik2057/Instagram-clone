@@ -43,10 +43,12 @@ class FirestoreMethods {
   Future<void> likePost(String postId, String uid, List likes) async {
     try {
       if (likes.contains(uid)) {
+        print("current user is present so removing it");
         _firestore.collection('posts').doc(postId).update({
           'likes': FieldValue.arrayRemove([uid]),
         });
       } else {
+        print("current user is not present  in likes");
         DocumentReference docRef = _firestore.collection('posts').doc(postId);
         docRef.get().then((doc) {
           List likesList = doc.get('likes');
@@ -102,7 +104,7 @@ class FirestoreMethods {
     }
   }
 
-  Future<void> followUser(String uid, String followId) async {
+  Future<void> followUser(String followId, String uid) async {
     try {
       DocumentSnapshot snap =
           await _firestore.collection('users').doc(uid).get();

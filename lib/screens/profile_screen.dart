@@ -6,6 +6,7 @@ import 'package:instagram_flutter/Widgets/follow_button.dart';
 import 'package:instagram_flutter/providers/image_selection_provider.dart';
 import 'package:instagram_flutter/resources/auth_methods.dart';
 import 'package:instagram_flutter/resources/firestore_methods.dart';
+import 'package:instagram_flutter/screens/expanded_image.dart';
 import 'package:instagram_flutter/screens/login_screen.dart';
 import 'package:instagram_flutter/screens/post_detail_screen.dart';
 import 'package:instagram_flutter/utils/colors.dart';
@@ -56,6 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 });
                 getData();
                 setState(() {
+                  print("set state inside delete pressed");
                   isSelectionMode = false;
                 });
                 Navigator.pop(context, 'Delete');
@@ -74,29 +76,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
           .collection('users')
           .doc(widget.uid)
           .get();
-
+      
       //get no of posts
       var postSnap = await FirebaseFirestore.instance
           .collection('posts')
-          .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+          .where('uid', isEqualTo: widget.uid)
           .get();
       postLen = postSnap.docs.length;
       userData = usersnap.data()!;
       followers = userData['followers'].length;
       following = userData['following'].length;
-      isFollowing = userData['following']
+      isFollowing = userData['followers']
           .contains(FirebaseAuth.instance.currentUser!.uid);
-      setState(() {});
-      // print(userData);
-      // print(userData['username']);
+          if(followers<0) {
+            followers=0;
+          }
+          if(following<0) {
+            following=0;
+          }  
+      setState(() 
+      {});
     } catch (e) {
       print(e.toString());
-      // showSnackbar(e.toString(), context);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    print(isFollowing);
     return Scaffold(
       appBar: AppBar(
         leading: isSelectionMode
@@ -140,11 +147,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Row(
                     children: [
-                      CircleAvatar(
-                        radius: 40,
-                        backgroundColor: Colors.grey,
-                        backgroundImage:
-                            NetworkImage(userData['photoUrl'].toString()),
+                      GestureDetector(
+                        onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                          return ExpandedImage(url: userData['photoUrl'].toString());
+                        })),
+                        child: CircleAvatar(
+                          radius: 40,
+                          backgroundColor: Colors.grey,
+                          backgroundImage:
+                              NetworkImage(userData['photoUrl'].toString()),
+                        ),
                       ),
                       Expanded(
                         flex: 1,
@@ -187,12 +199,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             function: () async {
                                               await FirestoreMethods()
                                                   .followUser(
+                                                    userData['uid'],
                                                       FirebaseAuth.instance
-                                                          .currentUser!.uid,
-                                                      userData['uid']);
+                                                          .currentUser!.uid
+                                                      );        
                                               setState(() {
+                                                
                                                 isFollowing = false;
-                                                followers--;
+                                                getData();
                                               });
                                             },
                                           )
@@ -204,12 +218,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             function: () async {
                                               await FirestoreMethods()
                                                   .followUser(
+                                                    userData['uid'],
                                                       FirebaseAuth.instance
-                                                          .currentUser!.uid,
-                                                      userData['uid']);
+                                                          .currentUser!.uid
+                                                      );
                                               setState(() {
+                                               
                                                 isFollowing = true;
-                                                followers++;
+                                                getData();
                                               });
                                             },
                                           ),
@@ -290,8 +306,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             DocumentSnapshot snap = documents[index];
                             return GestureDetector(
                               onLongPress: () {
+                                if(FirebaseAuth.instance.currentUser!.uid==widget.uid){
                                 if (model.selectedImages.isEmpty) {
                                   setState(() {
+                                    
                                     isSelectionMode = true;
                                   });
                                 }
@@ -301,12 +319,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     isSelectionMode = false;
                                   });
                                 }
+                                }
                               },
                               onTap: () {
-                                if (isSelectionMode) {
+                                if (isSelectionMode&&FirebaseAuth.instance.currentUser!.uid==widget.uid) {
                                   model.toggleImageSelection(snap['postId']);
                                   if (model.selectedImages.isEmpty) {
                                     setState(() {
+                                     
                                       isSelectionMode = false;
                                     });
                                   }
@@ -317,7 +337,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               PostDetailScreen(snap: snap)))
                                       .then((value) {
                                     getData();
-                                    setState(() {});
+                                    setState(() {
+                                      
+                                    });
                                   });
                                 }
                               },
